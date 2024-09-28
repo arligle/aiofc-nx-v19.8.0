@@ -11,10 +11,10 @@ echo "没有提交历史，跳过提交消息检查"
 exit 0
 fi
 # 限制直接提交到主分支
-# if [ "$branch" = "main" ]; then
-# echo "您不能直接提交到主分支"
-# exit 1
-# fi
+if [ "$branch" = "main" ]; then
+echo "您不能直接提交到主分支"
+exit 1
+fi
 
 
 # 检查提交消息是否由 Commitizen 生成
