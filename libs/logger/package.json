@@ -6,7 +6,8 @@
     "class-validator": "^0.14.1",
     "@aiokit/validation": "workspace:*",
     "@nestjs/common": "^10.0.2",
-    "nestjs-pino": "^4.1.0"
+    "nestjs-pino": "^4.1.0",
+    "nestjs-cls": "^4.4.1"
   },
   "type": "commonjs",
   "main": "./src/index.js",

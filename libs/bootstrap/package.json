@@ -4,7 +4,8 @@
   "dependencies": {
     "tslib": "^2.3.0",
     "@nestjs/common": "^10.0.2",
-    "@nestjs/core": "^10.0.2"
+    "@nestjs/core": "^10.0.2",
+    "@nestjs/platform-fastify": "^10.4.4"
   },
   "type": "commonjs",
   "main": "./src/index.js",
