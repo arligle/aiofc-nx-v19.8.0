@@ -1,6 +1,6 @@
 {
   "name": "@aiofc-nx-v19.8/source",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
@@ -52,6 +52,7 @@
     "@nestjs/platform-fastify": "^10.4.4",
     "@nestjs/swagger": "^7.4.2",
     "@nestjs/terminus": "^10.2.3",
+    "accept-language-parser": "^1.5.0",
     "argon2": "^0.41.1",
     "axios": "^1.6.0",
     "axios-retry": "^4.5.0",
