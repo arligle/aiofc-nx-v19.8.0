@@ -1,0 +1,30 @@
+{
+  "name": "@aiokit/typeorm",
+  "version": "0.0.1",
+  "dependencies": {
+    "tslib": "^2.3.0",
+    "class-validator": "^0.14.1",
+    "@aiokit/validation": "workspace:*",
+    "typeorm": "0.3.20",
+    "@nestjs/common": "^10.0.2",
+    "@nestjs/swagger": "^7.4.2",
+    "@aiokit/persistence-api": "workspace:*",
+    "class-transformer": "^0.5.1",
+    "@nestjs/core": "^10.0.2",
+    "@aiokit/i18n": "workspace:*",
+    "@aiokit/string-utils": "workspace:*",
+    "@aiokit/exceptions": "workspace:*",
+    "reflect-metadata": "^0.1.13",
+    "@aiokit/config": "workspace:*",
+    "@aiokit/common-types": "workspace:*",
+    "nestjs-paginate": "^9.1.2",
+    "nestjs-cls": "^4.4.1",
+    "@nestjs/typeorm": "^10.0.2",
+    "typeorm-transactional": "^0.5.0",
+    "typeorm-naming-strategies": "^4.1.0"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "private": true
+}
