@@ -1,0 +1,17 @@
+{
+  "name": "@aiofc/health-check",
+  "version": "0.0.1",
+  "dependencies": {
+    "@aiokit/validation": "workspace:*",
+    "class-validator": "^0.14.1",
+    "@nestjs/common": "^10.0.2",
+    "@nestjs/swagger": "^7.4.2",
+    "tslib": "^2.3.0",
+    "@aiokit/auth": "workspace:*",
+    "@nestjs/terminus": "^10.2.3"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "private": true
+}
