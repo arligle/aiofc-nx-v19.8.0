@@ -2,7 +2,25 @@
   "name": "@aiofc-nx-v19.8/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "test:all": "nx affected:test --all --codeCoverage --skip-nx-cache",
+    "prepare": "husky install",
+    "lint:ws": "pnpm dlx sherif@latest",
+    "lint:ws-fix": "pnpm dlx sherif@latest --fix",
+    "clean": "git clean -xdf node_modules",
+    "clean-all": "pnpm run clean && pnpm recursive exec rm -rf node_modules",
+    "nx-graph": "pnpm nx dep-graph",
+    "nx-show": "pnpm nx show project adminer",
+    "affected": "nx affected --graph",
+    "affected:libs": "nx affected:libs",
+    "reinstall-all": "pnpm clean-all && rm pnpm-lock.yaml && pnpm install"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^10.0.2",
@@ -13,6 +31,9 @@
     "rxjs": "^7.8.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "@commitlint/config-nx-scopes": "^19.5.0",
     "@eslint/js": "^9.8.0",
     "@nestjs/schematics": "^10.0.1",
     "@nestjs/testing": "^10.0.2",
@@ -30,8 +51,11 @@
     "@swc/helpers": "~0.5.11",
     "@types/jest": "^29.5.12",
     "@types/node": "~18.16.9",
+    "commitizen": "^4.3.1",
+    "cz-customizable": "^7.2.1",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^9.0.0",
+    "husky": "^8.0.0",
     "jest": "^29.7.0",
     "jest-environment-node": "^29.7.0",
     "nx": "19.8.2",
