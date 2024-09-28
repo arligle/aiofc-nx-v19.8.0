@@ -1,0 +1,45 @@
+import { NestFastifyApplication } from '@nestjs/platform-fastify';
+import { Test, TestingModule } from '@nestjs/testing';
+<% if (db) { %>
+import { startPostgres, StartedDb } from '@aiokit/test-utils';
+<% } %>
+import { bootstrapBaseWebApp } from '@aiokit/bootstrap';
+
+describe('Test <%= pascalCase(name) -%>AppModule tests', () => {
+  let app: NestFastifyApplication;
+<% if (db) { %>
+  let db: StartedDb;
+<% } %>
+
+  beforeAll(async () => {
+<% if (db) { %>
+    db = await startPostgres({
+      runMigrations: true,
+    });
+<% } %>
+  });
+
+  afterAll(async () => {
+    await db.container.stop();
+  });
+
+  beforeEach(async () => {
+    const { <%= pascalCase(name) -%>AppModule } = require('../<%= name -%>-app.module');
+
+    const moduleFixture: TestingModule = await Test.createTestingModule({
+      imports: [<%= pascalCase(name) -%>AppModule],
+    }).compile();
+    app = await bootstrapBaseWebApp(moduleFixture, <%= pascalCase(name) -%>AppModule);
+  });
+
+  afterEach(async () => {
+    jest.clearAllMocks();
+    await app.close();
+  });
+
+  describe('Test <%= pascalCase(name) -%> app start up', () => {
+    it('app bootstrap', async () => {
+      expect(app).toBeDefined();
+    });
+  });
+});

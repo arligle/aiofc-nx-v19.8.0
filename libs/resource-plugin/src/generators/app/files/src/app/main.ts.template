@@ -1,0 +1,4 @@
+import { <%= pascalCase(name) -%>AppModule } from './<%= name -%>-app.module';
+import { bootstrapBaseWebApp } from '@aiokit/bootstrap';
+
+void bootstrapBaseWebApp(<%= pascalCase(name) -%>AppModule);

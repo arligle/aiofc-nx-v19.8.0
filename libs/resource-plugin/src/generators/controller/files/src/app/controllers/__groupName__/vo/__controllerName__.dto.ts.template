@@ -1,0 +1,47 @@
+import { OmitType } from '@nestjs/swagger';
+import { <%= pascalCase(entityName) -%> } from '../../../database/entities';
+import { FilterOperator, PaginateConfig } from 'nestjs-paginate';
+import {
+  DEFAULT_CREATE_ENTITY_EXCLUDE_LIST,
+  DEFAULT_ENTITY_EXCLUDE_LIST,
+  DEFAULT_UPDATE_ENTITY_EXCLUDE_LIST,
+} from '@aiokit/typeorm';
+
+export class <%= pascalCase(entityName) -%>DTO extends OmitType(<%= pascalCase(entityName) -%>, [
+  ...DEFAULT_ENTITY_EXCLUDE_LIST,
+] as const) {}
+
+export class Create<%= pascalCase(entityName) -%>Request extends OmitType(<%= pascalCase(entityName) -%>, [
+  ...DEFAULT_CREATE_ENTITY_EXCLUDE_LIST,
+<% if (entityIncludesIdField) { %>'id',<% } %>
+<% if (entityIncludesVersionField) { %>'version',<% } %>
+<% if (tenantBaseEntity) { %>'tenantId',<% } %>
+] as const) {}
+
+export class Update<%= pascalCase(entityName) -%>Request extends OmitType(<%= pascalCase(entityName) -%>, [
+  ...DEFAULT_UPDATE_ENTITY_EXCLUDE_LIST,
+<% if (tenantBaseEntity) { %>'tenantId',<% } %>
+<% if (entityIncludesVersionField) { %>'version',<% } %>
+] as const) {}
+
+export const <%= constantCase(entityName) -%>_PAGINATION_CONFIG: PaginateConfig<<%= pascalCase(entityName) -%>DTO> = {
+  defaultLimit: 50,
+  maxLimit: 100,
+  relations: [],
+  searchableColumns: [],
+  filterableColumns: {
+    id: true,
+    createdAt: [
+      FilterOperator.GT,
+      FilterOperator.GTE,
+      FilterOperator.LT,
+      FilterOperator.LTE,
+    ],
+  },
+  select: [],
+  sortableColumns: ['id', 'createdAt', 'updatedAt'],
+  defaultSortBy: [
+    ['createdAt', 'DESC'],
+    ['id', 'DESC'],
+  ],
+};

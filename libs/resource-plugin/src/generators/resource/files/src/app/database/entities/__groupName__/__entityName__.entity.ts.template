@@ -1,0 +1,31 @@
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  VersionColumn,
+} from 'typeorm';
+import { IsNumberLocalized } from '@aiokit/validation';
+import { Expose } from 'class-transformer';
+
+import {
+<% if (tenantBaseEntity) { %>
+    BaseTenantEntityHelper as BaseEntity
+<% } else { %>
+    BaseEntityHelper as BaseEntity
+<% } %>
+} from '@aiokit/typeorm';
+
+@Entity('<%= snakeCase(entityName) -%>')
+export class <%= pascalCase(entityName) -%> extends BaseEntity {
+<% if (entityIncludesIdField) { %>
+  @PrimaryGeneratedColumn('uuid')
+  @Expose()
+  id!: string;
+<% } %>
+
+<% if (entityIncludesVersionField) { %>
+  @VersionColumn()
+  @IsNumberLocalized()
+  @Expose()
+  version!: number;
+<% } %>
+}

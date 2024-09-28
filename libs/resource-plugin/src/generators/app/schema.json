@@ -1,0 +1,684 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "SaasBuildKitApplicationGenerator",
+  "title": "SaasBuildKit Application Options Schema",
+  "description": "SaasBuildKit Application Options Schema.",
+  "cli": "nx",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "The name of the application.",
+      "type": "string",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use for the node application?"
+    },
+    "directory": {
+      "description": "The directory of the new application.",
+      "type": "string"
+    },
+    "lintCommandName": {
+      "type": "string",
+      "default": "lint",
+      "description": "The name of lint nx command in project.json"
+    },
+    "skipFormat": {
+      "description": "Skip formatting files.",
+      "type": "boolean",
+      "default": false,
+      "x-priority": "internal"
+    },
+    "skipPackageJson": {
+      "description": "Do not add dependencies to `package.json`.",
+      "type": "boolean",
+      "default": false,
+      "x-priority": "internal"
+    },
+    "linter": {
+      "description": "The tool to use for running lint checks.",
+      "type": "string",
+      "enum": [
+        "eslint",
+        "none"
+      ],
+      "default": "eslint"
+    },
+    "unitTestRunner": {
+      "description": "Test runner to use for unit tests.",
+      "type": "string",
+      "enum": [
+        "jest",
+        "none"
+      ],
+      "default": "jest"
+    },
+    "e2eTestRunner": {
+      "type": "string",
+      "enum": [
+        "jest",
+        "none"
+      ],
+      "description": "Test runner to use for end to end (e2e) tests",
+      "default": "none"
+    },
+    "tags": {
+      "description": "Add tags to the application (used for linting).",
+      "type": "string"
+    },
+    "frontendProject": {
+      "description": "Frontend project that needs to access this application. This sets up proxy configuration.",
+      "type": "string",
+      "x-priority": "important"
+    },
+    "setParserOptionsProject": {
+      "type": "boolean",
+      "description": "Whether or not to configure the ESLint `parserOptions.project` option. We do not do this by default for lint performance reasons.",
+      "default": false
+    },
+    "strict": {
+      "type": "boolean",
+      "description": "Adds strictNullChecks, noImplicitAny, strictBindCallApply, forceConsistentCasingInFileNames and noFallthroughCasesInSwitch to tsconfig.",
+      "default": true
+    },
+    "i18n": {
+      "description": "Add support for i18n.",
+      "type": "boolean",
+      "default": true
+    },
+    "health": {
+      "description": "Setup health check controller.",
+      "type": "boolean",
+      "default": true
+    },
+    "title": {
+      "description": "The title of the application.",
+      "type": "string",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "description": {
+      "description": "The description of the application.",
+      "type": "string",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "auth": {
+      "description": "Configure authentication.",
+      "type": "boolean",
+      "default": true
+    },
+    "db": {
+      "description": "Configure database.",
+      "type": "boolean",
+      "default": true
+    },
+    "dbType": {
+      "description": "Database type.",
+      "type": "string",
+      "enum": [
+        "postgres"
+      ]
+    },
+    "dbName": {
+      "description": "Database name.",
+      "type": "string",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "appPort": {
+      "description": "Application port.",
+      "type": "number",
+      "default": 9000,
+      "minimum": 1025,
+      "maximum": 65535
+    },
+    "contactName": {
+      "description": "Contact person name.",
+      "type": "string",
+      "default": "Unknown"
+    },
+    "contactEmail": {
+      "description": "Contact person email.",
+      "type": "string",
+      "default": "john.doe@example.com"
+    },
+    "contactUrl": {
+      "description": "Contact url or website.",
+      "type": "string",
+      "default": "https://example.com/"
+    },
+    "testsFolderName": {
+      "description": "Tests folder name.",
+      "type": "string",
+      "default": "__tests__"
+    },
+    "configureJestConfig": {
+      "description": "Generates a tailored Jest configuration file for the application when set to true.",
+      "type": "boolean",
+      "default": true
+    },
+    "languages": {
+      "description": "Set languages for i18n.",
+      "type": "array",
+      "alias": "l",
+      "default": [
+        "en"
+      ],
+      "x-prompt": {
+        "type": "list",
+        "multiselect": true,
+        "message": "What languages would you like to use for i18n? It also possible to specify a region",
+        "items": [
+          {
+            "value": "af",
+            "label": "Afrikaans"
+          },
+          {
+            "value": "am",
+            "label": "Amharic"
+          },
+          {
+            "value": "ar",
+            "label": "Arabic"
+          },
+          {
+            "value": "arn",
+            "label": "Mapuche"
+          },
+          {
+            "value": "as",
+            "label": "Assamese"
+          },
+          {
+            "value": "az",
+            "label": "Azerbaijani"
+          },
+          {
+            "value": "ba",
+            "label": "Bashkir"
+          },
+          {
+            "value": "be",
+            "label": "Belarusian"
+          },
+          {
+            "value": "bg",
+            "label": "Bulgarian"
+          },
+          {
+            "value": "bn",
+            "label": "Bangla"
+          },
+          {
+            "value": "bo",
+            "label": "Tibetan"
+          },
+          {
+            "value": "br",
+            "label": "Breton"
+          },
+          {
+            "value": "bs",
+            "label": "Bosnian"
+          },
+          {
+            "value": "ca",
+            "label": "Valencian"
+          },
+          {
+            "value": "co",
+            "label": "Corsican"
+          },
+          {
+            "value": "cs",
+            "label": "Czech"
+          },
+          {
+            "value": "cy",
+            "label": "Welsh"
+          },
+          {
+            "value": "da",
+            "label": "Danish"
+          },
+          {
+            "value": "de",
+            "label": "German"
+          },
+          {
+            "value": "dsb",
+            "label": "Lower Sorbian"
+          },
+          {
+            "value": "dv",
+            "label": "Maldivian"
+          },
+          {
+            "value": "el",
+            "label": "Modern Greek (1453-)"
+          },
+          {
+            "value": "en",
+            "label": "English"
+          },
+          {
+            "value": "es",
+            "label": "Castilian"
+          },
+          {
+            "value": "et",
+            "label": "Estonian"
+          },
+          {
+            "value": "eu",
+            "label": "Basque"
+          },
+          {
+            "value": "fa",
+            "label": "Persian"
+          },
+          {
+            "value": "fi",
+            "label": "Finnish"
+          },
+          {
+            "value": "fil",
+            "label": "Pilipino"
+          },
+          {
+            "value": "fo",
+            "label": "Faroese"
+          },
+          {
+            "value": "fr",
+            "label": "French"
+          },
+          {
+            "value": "fy",
+            "label": "Western Frisian"
+          },
+          {
+            "value": "ga",
+            "label": "Irish"
+          },
+          {
+            "value": "gd",
+            "label": "Gaelic"
+          },
+          {
+            "value": "gl",
+            "label": "Galician"
+          },
+          {
+            "value": "gsw",
+            "label": "Alsatian"
+          },
+          {
+            "value": "gu",
+            "label": "Gujarati"
+          },
+          {
+            "value": "ha",
+            "label": "Hausa"
+          },
+          {
+            "value": "he",
+            "label": "Hebrew"
+          },
+          {
+            "value": "hi",
+            "label": "Hindi"
+          },
+          {
+            "value": "hr",
+            "label": "Croatian"
+          },
+          {
+            "value": "hsb",
+            "label": "Upper Sorbian"
+          },
+          {
+            "value": "hu",
+            "label": "Hungarian"
+          },
+          {
+            "value": "hy",
+            "label": "Armenian (see also hyw)"
+          },
+          {
+            "value": "id",
+            "label": "Indonesian"
+          },
+          {
+            "value": "ig",
+            "label": "Igbo"
+          },
+          {
+            "value": "ii",
+            "label": "Nuosu"
+          },
+          {
+            "value": "is",
+            "label": "Icelandic"
+          },
+          {
+            "value": "it",
+            "label": "Italian"
+          },
+          {
+            "value": "iu",
+            "label": "Inuktitut"
+          },
+          {
+            "value": "ja",
+            "label": "Japanese"
+          },
+          {
+            "value": "ka",
+            "label": "Georgian"
+          },
+          {
+            "value": "kk",
+            "label": "Kazakh"
+          },
+          {
+            "value": "kl",
+            "label": "Greenlandic"
+          },
+          {
+            "value": "km",
+            "label": "Central Khmer"
+          },
+          {
+            "value": "kn",
+            "label": "Kannada"
+          },
+          {
+            "value": "kok",
+            "label": "Konkani (macrolanguage)"
+          },
+          {
+            "value": "ko",
+            "label": "Korean"
+          },
+          {
+            "value": "ky",
+            "label": "Kyrgyz"
+          },
+          {
+            "value": "lb",
+            "label": "Letzeburgesch"
+          },
+          {
+            "value": "lo",
+            "label": "Lao"
+          },
+          {
+            "value": "lt",
+            "label": "Lithuanian"
+          },
+          {
+            "value": "lv",
+            "label": "Latvian"
+          },
+          {
+            "value": "mi",
+            "label": "Maori"
+          },
+          {
+            "value": "mk",
+            "label": "Macedonian"
+          },
+          {
+            "value": "ml",
+            "label": "Malayalam"
+          },
+          {
+            "value": "mn",
+            "label": "Mongolian"
+          },
+          {
+            "value": "moh",
+            "label": "Mohawk"
+          },
+          {
+            "value": "mr",
+            "label": "Marathi"
+          },
+          {
+            "value": "ms",
+            "label": "Malay (macrolanguage)"
+          },
+          {
+            "value": "mt",
+            "label": "Maltese"
+          },
+          {
+            "value": "nb",
+            "label": "Norwegian Bokmål"
+          },
+          {
+            "value": "ne",
+            "label": "Nepali (macrolanguage)"
+          },
+          {
+            "value": "nl",
+            "label": "Flemish"
+          },
+          {
+            "value": "nn",
+            "label": "Norwegian Nynorsk"
+          },
+          {
+            "value": "no",
+            "label": "Norwegian"
+          },
+          {
+            "value": "nso",
+            "label": "Sepedi"
+          },
+          {
+            "value": "oc",
+            "label": "Occitan (post 1500)"
+          },
+          {
+            "value": "or",
+            "label": "Odia (macrolanguage)"
+          },
+          {
+            "value": "pa",
+            "label": "Punjabi"
+          },
+          {
+            "value": "pl",
+            "label": "Polish"
+          },
+          {
+            "value": "prs",
+            "label": "Afghan Persian"
+          },
+          {
+            "value": "ps",
+            "label": "Pashto"
+          },
+          {
+            "value": "pt",
+            "label": "Portuguese"
+          },
+          {
+            "value": "quz",
+            "label": "Cusco Quechua"
+          },
+          {
+            "value": "rm",
+            "label": "Romansh"
+          },
+          {
+            "value": "ro",
+            "label": "Moldovan"
+          },
+          {
+            "value": "ru",
+            "label": "Russian"
+          },
+          {
+            "value": "rw",
+            "label": "Kinyarwanda"
+          },
+          {
+            "value": "sah",
+            "label": "Yakut"
+          },
+          {
+            "value": "sa",
+            "label": "Sanskrit"
+          },
+          {
+            "value": "se",
+            "label": "Northern Sami"
+          },
+          {
+            "value": "si",
+            "label": "Sinhalese"
+          },
+          {
+            "value": "sk",
+            "label": "Slovak"
+          },
+          {
+            "value": "sl",
+            "label": "Slovenian"
+          },
+          {
+            "value": "sma",
+            "label": "Southern Sami"
+          },
+          {
+            "value": "smj",
+            "label": "Lule Sami"
+          },
+          {
+            "value": "smn",
+            "label": "Inari Sami"
+          },
+          {
+            "value": "sms",
+            "label": "Skolt Sami"
+          },
+          {
+            "value": "sq",
+            "label": "Albanian"
+          },
+          {
+            "value": "sr",
+            "label": "Serbian (see cnr for Montenegrin)"
+          },
+          {
+            "value": "sv",
+            "label": "Swedish"
+          },
+          {
+            "value": "sw",
+            "label": "Swahili (macrolanguage)"
+          },
+          {
+            "value": "syr",
+            "label": "Syriac"
+          },
+          {
+            "value": "ta",
+            "label": "Tamil"
+          },
+          {
+            "value": "te",
+            "label": "Telugu"
+          },
+          {
+            "value": "tg",
+            "label": "Tajik"
+          },
+          {
+            "value": "th",
+            "label": "Thai"
+          },
+          {
+            "value": "tk",
+            "label": "Turkmen"
+          },
+          {
+            "value": "tlh",
+            "label": "tlhIngan Hol"
+          },
+          {
+            "value": "tn",
+            "label": "Tswana"
+          },
+          {
+            "value": "tr",
+            "label": "Turkish"
+          },
+          {
+            "value": "tt",
+            "label": "Tatar"
+          },
+          {
+            "value": "tzm",
+            "label": "Central Atlas Tamazight"
+          },
+          {
+            "value": "ug",
+            "label": "Uyghur"
+          },
+          {
+            "value": "uk",
+            "label": "Ukrainian"
+          },
+          {
+            "value": "ur",
+            "label": "Urdu"
+          },
+          {
+            "value": "uz",
+            "label": "Uzbek"
+          },
+          {
+            "value": "vi",
+            "label": "Vietnamese"
+          },
+          {
+            "value": "wo",
+            "label": "Wolof"
+          },
+          {
+            "value": "xh",
+            "label": "Xhosa"
+          },
+          {
+            "value": "yo",
+            "label": "Yoruba"
+          },
+          {
+            "value": "zh",
+            "label": "Chinese"
+          },
+          {
+            "value": "zu",
+            "label": "Zulu"
+          }
+        ]
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name"
+  ]
+}

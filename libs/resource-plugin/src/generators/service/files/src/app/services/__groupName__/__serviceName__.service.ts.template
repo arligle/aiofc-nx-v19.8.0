@@ -1,0 +1,39 @@
+import { Injectable } from '@nestjs/common';
+import { <%= pascalCase(entityName) -%> } from '../../database/entities';
+import { <%= pascalCase(repositoryName) -%>Repository } from '../../repositories';
+import {
+<% if (tenantBaseService) { %>
+    BaseTenantEntityService as BaseService
+<% } else { %>
+    BaseEntityService as BaseService
+<% } %>
+} from '@aiokit/service-api';
+
+<% if (tenantBaseService) { %>
+@Injectable()
+export class <%= pascalCase(serviceName) -%>Service extends BaseService<
+ <%= pascalCase(entityName) -%>,
+ 'id',
+ <%= pascalCase(repositoryName) -%>Repository,
+ Pick<<%= pascalCase(repositoryName) -%>, 'id' | 'version'>
+> {
+  constructor(
+    repository: <%= pascalCase(repositoryName) -%>Repository
+  ) {
+    super(repository);
+  }
+}
+<% } else { %>
+@Injectable()
+export class <%= pascalCase(entityName) -%>Service extends BaseService<
+    <%= pascalCase(entityName) -%>,
+    'id',
+    <%= pascalCase(repositoryName) -%>Repository,
+    Pick<<%= pascalCase(entityName) -%>, 'id' | 'version'>
+    > {
+      constructor(repository: <%= pascalCase(repositoryName) -%>Repository) {
+      super(repository);
+    }
+}
+<% } %>
+

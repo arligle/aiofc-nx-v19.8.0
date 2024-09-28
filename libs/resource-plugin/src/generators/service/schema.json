@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "Service",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "projectName": {
+      "type": "string",
+      "description": "Application name in your workspace, e.g. 'platform'",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What is app name?",
+      "x-dropdown": "projects",
+      "minLength": 1
+    },
+    "serviceName": {
+      "type": "string",
+      "description": "Service name is the name of the service, match with the entity name usually",
+      "x-prompt": "What is service name?",
+      "minLength": 1
+    },
+    "repositoryName": {
+      "type": "string",
+      "description": "Repository name, must match with entity name, e.g. 'user'. Usually match with service name",
+      "x-prompt": "What is repository name? Usually match with service name",
+      "minLength": 1
+    },
+    "entityName": {
+      "type": "string",
+      "description": "Entity name, must match the class name, that is exported from entity file, e.g. 'user'",
+      "x-prompt": "What is entity name? Usually match with service name",
+      "minLength": 1
+    },
+    "groupName": {
+      "type": "string",
+      "description": "Group name is folder name that you want to generate your entity in it e.g. 'users'",
+      "x-prompt": "What is group name for generation? It's folder name under the base folder",
+      "minLength": 1
+    },
+    "tenantBaseService": {
+      "type": "boolean",
+      "default": true,
+      "description": "It's indicating that this entity is tenant base service or not, so we can choose the appropriate base service for generation",
+      "x-prompt": "Is this a tenant base service? (y/n)"
+    },
+    "lintCommandName": {
+      "type": "string",
+      "default": "lint",
+      "description": "The name of lint nx command in project.json"
+    }
+  },
+  "required": [
+    "projectName",
+    "serviceName",
+    "repositoryName",
+    "entityName",
+    "tenantBaseService",
+    "groupName"
+  ]
+}

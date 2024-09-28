@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "HttpClient",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Application name in your workspace, e.g. 'platform'",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What is app name?",
+      "x-dropdown": "projects",
+      "minLength": 1
+    },
+    "lintCommandName": {
+      "type": "string",
+      "default": "lint",
+      "description": "The name of lint nx command in project.json"
+    },
+    "directory": {
+      "type": "string",
+      "description": "Base libs folder",
+      "x-prompt": "What is base libs folder?",
+      "minLength": 1,
+      "default": "clients"
+    },
+    "importPath": {
+      "description": "The library name used to import it, like @myorg/my-awesome-lib. Must be a valid npm name.",
+      "type": "string",
+      "x-prompt": "What is lib importPath?",
+      "minLength": 1
+    }
+  },
+  "required": ["name", "importPath"]
+}

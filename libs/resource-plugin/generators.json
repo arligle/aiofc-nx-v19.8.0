@@ -1,0 +1,44 @@
+{
+  "generators": {
+    "resource": {
+      "factory": "./src/generators/resource/generator",
+      "schema": "./src/generators/resource/schema.json",
+      "description": "resource generator"
+    },
+    "repository": {
+      "factory": "./src/generators/repository/generator",
+      "schema": "./src/generators/repository/schema.json",
+      "description": "repository generator"
+    },
+    "service": {
+      "factory": "./src/generators/service/generator",
+      "schema": "./src/generators/service/schema.json",
+      "description": "service generator"
+    },
+    "controller": {
+      "factory": "./src/generators/controller/generator",
+      "schema": "./src/generators/controller/schema.json",
+      "description": "controller generator"
+    },
+    "lib": {
+      "factory": "./src/generators/lib/generator",
+      "schema": "./src/generators/lib/schema.json",
+      "description": "lib generator"
+    },
+    "app": {
+      "factory": "./src/generators/app/generator",
+      "schema": "./src/generators/app/schema.json",
+      "description": "app generator"
+    },
+    "i18n": {
+      "factory": "./src/generators/i18n/generator",
+      "schema": "./src/generators/i18n/schema.json",
+      "description": "i18n generator"
+    },
+    "http-client": {
+      "factory": "./src/generators/http-client/generator",
+      "schema": "./src/generators/http-client/schema.json",
+      "description": "http-client generator"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+import { Module, Provider } from '@nestjs/common';
+import { <%= constantCase(name) -%>_CLIENT_TOKEN as CLIENT_TOKEN } from './constants';
+import { createAxiosInstance } from '@aiokit/server-http-client';
+import { IAccessTokenPayload, UserClsStore } from '@aiokit/auth';
+import { ClsService } from 'nestjs-cls';
+import * as AllApis from './generated/api';
+import { AxiosInstance } from 'axios';
+import { <%= pascalCase(name) -%>ClientConfig } from './config/<%= name -%>-client.config';
+import { ROOT_CONFIG_ALIAS_TOKEN } from '@aiokit/config';
+import { BaseAPI } from './generated/base';
+
+const ApiClasses = Object.values(AllApis).filter((a) => {
+  return typeof a === 'function' && a.name.endsWith('Api');
+}) as (typeof BaseAPI)[];
+
+@Module({
+  providers: [
+    {
+      provide: CLIENT_TOKEN,
+      useFactory: (
+        clsService: ClsService<UserClsStore<IAccessTokenPayload>>,
+        config: PlatformClientConfig,
+      ) => {
+        return createAxiosInstance(clsService, config.platformClient);
+      },
+      inject: [ClsService, ROOT_CONFIG_ALIAS_TOKEN],
+    },
+    ...ApiClasses.map((ApiClass) => ({
+      provide: ApiClass,
+      useFactory: (axiosInstance: AxiosInstance) =>
+        new ApiClass(undefined, undefined, axiosInstance),
+      inject: [CLIENT_TOKEN],
+    })).map((a) => a as Provider),
+  ],
+  exports: ApiClasses.map((a) => a as Provider),
+})
+export class <%= pascalCase(name) -%>ClientModule {}
