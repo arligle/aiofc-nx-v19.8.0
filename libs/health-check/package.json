@@ -1,5 +1,5 @@
 {
-  "name": "@aiofc/health-check",
+  "name": "@aiokit/health-check",
   "version": "0.0.1",
   "dependencies": {
     "@aiokit/validation": "workspace:*",
