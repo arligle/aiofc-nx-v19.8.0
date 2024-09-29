@@ -17,7 +17,6 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "@aiofc/health-check": ["libs/health-check/src/index.ts"],
       "@aiokit/async-storage": ["libs/async-storage/src/index.ts"],
       "@aiokit/auth": ["libs/auth/src/index.ts"],
       "@aiokit/bootstrap": ["libs/bootstrap/src/index.ts"],
@@ -25,17 +24,17 @@
       "@aiokit/config": ["libs/config/src/index.ts"],
       "@aiokit/crypto": ["libs/crypto/src/index.ts"],
       "@aiokit/exceptions": ["libs/exceptions/src/index.ts"],
+      "@aiokit/health-check": ["libs/health-check/src/index.ts"],
       "@aiokit/i18n": ["libs/i18n/src/index.ts"],
       "@aiokit/logger": ["libs/logger/src/index.ts"],
       "@aiokit/persistence-api": ["libs/persistence-api/src/index.ts"],
-      "@aiokit/resource-plugin": ["libs/resource-plugin/src/index.ts"],
       "@aiokit/server-http-client": ["libs/server-http-client/src/index.ts"],
       "@aiokit/service-api": ["libs/service-api/src/index.ts"],
       "@aiokit/string-utils": ["libs/string-utils/src/index.ts"],
       "@aiokit/swagger-utils": ["libs/swagger-utils/src/index.ts"],
+      "@aiokit/test-utils": ["libs/test-utils/src/index.ts"],
       "@aiokit/typeorm": ["libs/typeorm/src/index.ts"],
-      "@aiokit/validation": ["libs/validation/src/index.ts"],
-      "libs/test-utils": ["libs/test-utils/src/index.ts"]
+      "@aiokit/validation": ["libs/validation/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,5 +1,0 @@
-import { HttpClientConfig } from '@aiokit/server-http-client';
-
-export interface <%= pascalCase(name) -%>ClientConfig {
-  <%= camelCase(name) -%>Client: HttpClientConfig;
-}
