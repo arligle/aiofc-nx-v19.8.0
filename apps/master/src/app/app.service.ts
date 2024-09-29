@@ -1,8 +1,12 @@
 import { Injectable } from '@nestjs/common';
+import RootConfig from '../config/root.config';
 
 @Injectable()
 export class AppService {
-  getData(): { message: string } {
-    return ({ message: 'Hello API' });
+  constructor(
+    private readonly config: RootConfig,
+  ) {}
+  getData(): { port: string } {
+    return ({ port: this.config.app.port.toString() });
   }
 }
