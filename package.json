@@ -23,7 +23,7 @@
   },
   "private": true,
   "dependencies": {
-    "@aiofc/health-check": "workspace:*",
+    "@aiokit/health-check": "workspace:*",
     "@aiokit/async-storage": "workspace:*",
     "@aiokit/auth": "workspace:*",
     "@aiokit/bootstrap": "workspace:*",
