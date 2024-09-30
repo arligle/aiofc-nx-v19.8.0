@@ -9,9 +9,7 @@ import type { DynamicModule, Type } from '@nestjs/common';
  * @param baseDir
  * @param rootSchemaClass
  * @param [options]
- * @return  DynamicModule & {
-  providers: Provider[];
-  exports: any[];
+ * @return  DynamicModule
 }
  */
 export function setupYamlBaseConfigModule(

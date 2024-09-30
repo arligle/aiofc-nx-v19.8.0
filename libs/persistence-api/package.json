@@ -2,10 +2,10 @@
   "name": "@aiokit/persistence-api",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "^2.3.0",
-    "nestjs-cls": "^4.4.1",
     "@aiokit/common-types": "workspace:*",
-    "nestjs-paginate": "^9.1.2"
+    "nestjs-cls": "^4.4.1",
+    "nestjs-paginate": "^9.1.2",
+    "tslib": "^2.3.0"
   },
   "type": "commonjs",
   "main": "./src/index.js",
