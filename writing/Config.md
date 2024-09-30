@@ -1,11 +1,11 @@
 # Config Library
 
-This library provides a set of general services and utilities for configuration.
-It can be used outside Softkit projects
+该库提供了一组用于配置的通用服务和实用程序。
+它可以在 aiokit 项目之外使用
 
 
-This library is based on [nestjs-config](https://github.com/Nikaple/nest-typed-config)
-All main work is done in parent library, this one is just a wrapper to make it easier to use
+该库基于[nestjs-config](https://github.com/Nikaple/nest-typed-config)
+所有主要工作都在父库中完成，这只是一个包装器，以使其更易于使用
 
 ---
 
@@ -35,7 +35,7 @@ export class YourAppModule {}
 
 ---
 
-`./assets` - is a folder where you have your config files. Above example is for such code structure:
+`./assets` -是一个包含配置文件的文件夹。上面的例子就是这样的代码结构：
 
 
 ```bash                                                                        git(docs/readme_for_each_module↑1|✚1…1
@@ -53,14 +53,14 @@ export class YourAppModule {}
 
 ## This wrapper has a few additions:
 
-- It has *PROFILES* feature, so you can have different configs for different environments.
-  - NESTJS_PROFILES - is an environment variable, which is used to define which profile to use
-  - By default, it's no profiles and only main provided file name will be used
-  - The order of profiles is important it defines how to merge configs in case if there will be any conflicts
+- It has *PROFILES* feature, 所以你可以针对不同的环境有不同的配置。
+  -NESTJS_PROFILES -是一个环境变量，用于定义要使用的配置文件
+  -默认情况下，没有配置文件（.env），仅使用主要提供的文件名，我们可以在项目目录下自定义一个.env文件
+  -配置文件的顺序很重要，它定义了如何合并配置，以防出现任何冲突
   - Example:
-    - `NESTJS_PROFILES=dev,local` - will use `.env-dev.yaml` and `.env-local.yaml` files and base `.env.yaml`
-    - `NESTJS_PROFILES=dev` - will use only `.env-dev.yaml` file and base `.env.yaml`
-  - By default, we recommend to set in jest config a test profile. In jest.preset.js
+    -`NESTJS_PROFILES=dev,local` -将使用 `.env-dev.yaml` 和 `.env-local.yaml` 文件以及基础 `.env.yaml`
+    -`NESTJS_PROFILES=dev` -将仅使用 `.env-dev.yaml` 文件和基础 `.env.yaml`
+  - 默认情况下，我们建议在 jest config 中设置测试配置文件。在 jest.preset.js 中
   ```javascript
      process.env.NESTJS_PROFILES = 'test';
   ```
@@ -73,7 +73,7 @@ export class YourAppModule {}
         useExisting: rootSchemaClass,
       }
       ```
-  - In your library you can expect this Provider be available globally, and you can force this config to implement your interface. So you will be able to decouple application very well, and declarative define what config you need to use in your library.
+  - 在您的库中，您可以期望此提供程序在全局范围内可用，并且您可以强制此配置来实现您的接口。因此，您将能够很好地解耦应用程序，并声明性地定义您需要在库中使用的配置。
     - Example in your library:
       ```typescript
       import { Inject, Injectable } from '@nestjs/common';

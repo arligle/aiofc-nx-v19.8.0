@@ -5,7 +5,15 @@ import {
   DEFAULT_CONFIGURATIONS_FOLDER_NAME,
   DEFAULT_CONFIGURATION_FILE_NAME,
 } from '../constants';
-
+/**
+ * @description 获取现有配置文件路径
+ * @export
+ * @param baseDir
+ * @param [folderName=DEFAULT_CONFIGURATIONS_FOLDER_NAME]
+ * @param [baseFileName=DEFAULT_CONFIGURATION_FILE_NAME]
+ * @param [profiles=getProfiles()]
+ * @return string[]
+ */
 export function getExistingFilePaths(
   baseDir: string,
   folderName = DEFAULT_CONFIGURATIONS_FOLDER_NAME,

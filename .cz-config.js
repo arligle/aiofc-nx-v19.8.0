@@ -22,6 +22,7 @@ module.exports = {
   scopes: [
     { name: 'apps' },
     { name: 'libs' },
+    { name: 'apps & libs' },
     { name: 'tools' },
     { name: 'writing' },
     { name: 'monorepo' },

@@ -2,14 +2,14 @@
   "name": "@aiokit/service-api",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "^2.3.0",
-    "nestjs-paginate": "^9.1.2",
-    "class-transformer": "^0.5.1",
     "@aiokit/common-types": "workspace:*",
+    "@aiokit/exceptions": "workspace:*",
     "@aiokit/persistence-api": "workspace:*",
-    "typeorm-transactional": "^0.5.0",
     "@aiokit/validation": "workspace:*",
-    "@aiokit/exceptions": "workspace:*"
+    "class-transformer": "^0.5.1",
+    "nestjs-paginate": "^9.1.2",
+    "tslib": "^2.3.0",
+    "typeorm-transactional": "^0.5.0"
   },
   "type": "commonjs",
   "main": "./src/index.js",

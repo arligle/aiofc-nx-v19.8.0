@@ -1,4 +1,4 @@
-import { bootstrapBaseApp } from "@aiokit/bootstrap";
-import { AppModule } from "./app/app.module";
+import { bootstrapFastifyApp } from "@aiokit/bootstrap";
+import { AppModule } from "./app.module";
 
-bootstrapBaseApp(AppModule);
+bootstrapFastifyApp(AppModule);

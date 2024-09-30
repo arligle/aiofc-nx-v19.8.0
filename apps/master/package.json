@@ -1,0 +1,14 @@
+{
+  "name": "@apps/master",
+  "version": "0.0.1",
+  "dependencies": {
+    "@aiokit/bootstrap": "workspace:*",
+    "@aiokit/config": "workspace:*",
+    "@nestjs/common": "^10.0.2",
+    "@nestjs/testing": "^10.0.2",
+    "@nx/webpack": "19.8.2",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "@aiokit/logger": "workspace:*"
+  }
+}
