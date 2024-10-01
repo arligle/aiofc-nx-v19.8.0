@@ -1,15 +1,16 @@
 # Logger Library
 
-This library is based on pino logger and provides an opinionated logger for Softkit ecosystem.
+该库基于 pino 记录器，并为 Softkit 生态系统提供了一个固定的记录器。
 
-By default it logs finish request, with request id and time, and also logs all exceptions with stack trace.
+默认情况下，它会记录完成请求，以及请求 ID 和时间，并使用堆栈跟踪记录所有异常。
 
-In general it is a pain to fine and setup a proper logger for nestjs application.
+一般来说，为 Nestjs 应用程序设置合适的记录器是一件很痛苦的事情。
 
-We solved most configuration problems that we had with logging in our projects.
+我们解决了登录项目时遇到的大多数配置问题。
 
-Also leverage the use of ClsService to have a proper request id in logs.
+还可以利用 ClsService 在日志中包含正确的请求 ID。
 
+[CLS (Async Context) 异步上下文存储](https://www.npmjs.com/package/nestjs-cls)
 ## Installation
 
 ```bash
@@ -20,7 +21,7 @@ yarn add @aiokit/logger
 
 ### Default interceptors
 
-- **LoggingInterceptor** - it will log all incoming requests
+- **LoggingInterceptor** - 它将记录所有传入的请求
 
 
 ### Default configuration

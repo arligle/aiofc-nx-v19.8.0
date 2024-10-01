@@ -1,7 +1,6 @@
 import {
   ClassSerializerInterceptor,
   INestApplication,
-  Logger,
 } from '@nestjs/common';
 import { HttpAdapterHost, NestFactory, Reflector } from '@nestjs/core';
 import {
@@ -23,7 +22,7 @@ import {
   OverrideDefaultNotFoundFilter,
   responseBodyFormatter,
 } from '@aiokit/exceptions';
-import { LoggerErrorInterceptor } from 'nestjs-pino';
+import { Logger, LoggerErrorInterceptor } from 'nestjs-pino';
 import { DEFAULT_VALIDATION_OPTIONS } from '@aiokit/validation';
 
 // TODO: 原来是从@aiokit/server-http-client中导入REQUEST_ID_HEADER
@@ -158,7 +157,7 @@ export async function bootstrapFastifyApp(
   await app.listen(port, '0.0.0.0');
   const url = await app.getUrl();
   const { pid } = process;
-  Logger.log(`pid:[${pid}] Master Server running on: ${url}/${globalPrefix}`);
+  logger.log(`pid:[${pid}] Master Server running on: ${url}/${globalPrefix}`);
   // logger.log(`[${pid}] Swagger API Docs running on: ${url}/${swaggerPath}`);
 
   return app;
